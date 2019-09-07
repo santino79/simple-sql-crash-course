@@ -1,40 +1,25 @@
-# egghead.io creator MDX Blog Starter Project
+# SQL Crash Course
 
-This is based on Robin Wieruch's https://github.com/rwieruch/gatsby-mdx-blog-starter-project
+## Gatsby starter genesis.
+
+This is based on Egghead's https://github.com/eggheadio/gatsby-starter-egghead-blog
+
+Which is based on Robin Wieruch's https://github.com/rwieruch/gatsby-mdx-blog-starter-project
 
 Lots of nice pieces are also borrowed from Jason Lengstorf https://github.com/jlengstorf/lengstorf.com
 
-A starter project in [Gatsby.js](https://www.gatsbyjs.org/) with [MDX](https://github.com/mdx-js/mdx).
+## SQL Quiz component.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/eggheadio/gatsby-starter-egghead-blog)
+This is largely inspired by the sterling work of other SQL online tutorial developers, mainly:
 
-## Features
+https://github.com/rhc2104/sqlteaching
 
-- MDX: JavaScript/React in Markdown
-- Prism.js: Syntax Highlighting
-- Pagination
-- Emotion
-- Typography.js
-- Self-hosted fonts ([Inter UI](https://rsms.me/inter/))
-- Social media share buttons
-- Site & Theme config files
-- ConvertKit subscribe form (Formik and Yup)
-- Placeholder illustrations by [Katerina Limpitsouni](https://twitter.com/ninalimpi) from [undraw.co](https://undraw.co/)
+https://github.com/GKhalsa/sql-fun-time
 
-## [➞ Demo](https://egghead-gatsby-starter.netlify.com/)
+And many others who blazed the trail.
 
-## Setup
+## Lesson content.
 
-- `git clone git@github.com:eggheadio/gatsby-starter-egghead-blog.git`
-- `cd gatsby-starter-egghead-blog`
-- `yarn`
-- `gatsby develop`
-- visit http://localhost:8000
+All lessons and quiz questions are by Alan Hylands, a data analyst and author of the [Simple Analytical](https://simpleanalytical.com) blog
 
-## Setup via Gatsby CLI
-
-- `gatsby new gatsby-starter-egghead-blog git@github.com:eggheadio/gatsby-starter-egghead-blog.git`
-- `cd gatsby-starter-egghead-blog`
-- `yarn`
-- `gatsby develop`
-- visit http://localhost:8000
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/santino79/https://github.com/santino79/simple-sql-crash-course)

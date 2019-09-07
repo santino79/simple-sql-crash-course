@@ -2,7 +2,7 @@
   "name": "simple-sql-crash-course",
   "description": "This is a SQL crash course for data analysts",
   "version": "1.0.0",
-  "author": "ALan Hylands <alan@simpleanalytical.com> (https://simpleanalytical.com)",
+  "author": "Alan Hylands <alan@simpleanalytical.com> (https://simpleanalytical.com)",
   "repository": "https://github.com/santino79/simple-sql-crash-course",
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.3",
@@ -54,7 +54,6 @@
     "react-live": "^2.2.0",
     "react-markdown": "^4.2.1",
     "react-share": "^3.0.1",
-    "react-table": "^6.10.0",
     "react-typography": "^0.16.19",
     "serve": "^11.1.0",
     "sql.js": "^0.5.0",
@@ -64,7 +63,8 @@
   },
   "devDependencies": {
     "babel-preset-gatsby": "^0.2.12",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "mem": ">=4.0.0"
   },
   "keywords": [
     "gatsby"

@@ -74,6 +74,8 @@ class MyQuiz extends Component {
         const correct_results = this.db.exec(correct_answer);
         const correct_output = this.table_from_results(correct_results);
 
+        document.getElementById("correct-display").style.display="none";
+
         var current_table_string = '';
         var tblnms = lessons[current_lesson].table_names;
 
@@ -101,18 +103,18 @@ class MyQuiz extends Component {
         var results = this.db.exec(sqlValue);
 
         if (results.length === 0) {
-          this.show_is_correct(false, 'Hmmm, that didn\'t return any results.  Try it again.');
+          this.show_is_correct(false, '<h4>Hmmm, that didn\'t return any results.</h4>  Try it again.');
         } else {
           var is_correct = this.grade_results(results, correct_results);
           if (is_correct) {
             this.show_is_correct(true, null);            
             } 
           else {
-            this.show_is_correct(false, 'Something doesn\'t look right there.  Try that one again.');
+            this.show_is_correct(false, '<h4>Something doesn\'t look right there.</h4>  Try that one again.');
           }
         }
       } catch (err) {
-        this.show_is_correct(false, 'It\'s good but it\'s not right.  Have another go.');
+        this.show_is_correct(false, '<h4>It\'s good but it\'s not right.</h4>  Have another go.');
       }
       return false;
 
@@ -136,25 +138,29 @@ class MyQuiz extends Component {
       var out_msg = this.state;
       
       if (is_correct) {
-        out_msg = 'Well done!  That\'s the right answer!<br/>';
+        out_msg = '<h4>Well done! That\'s the right answer!</h4>';
+        document.getElementById("quiz-form").style.display="none";
+        document.getElementById("correct-display").style.display="block";
+
         if (current_lesson < num_lessons) {
-          out_msg += '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3">Next Lesson</a>';
+          out_msg += '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3">Try the next Lesson</a>';
         } else {
           out_msg += 'You have reached the end of the line.  Go put SQL Master on your CV!';
         }
       } else if (custom_error_message) {
         out_msg = custom_error_message;
       } else {
-        out_msg = 'It\'s good but it\'s not right.  Have another go.';
+        out_msg = '<h4>Hmmm.</h4> It\'s good but it\'s not right.  Have another go.';
       }
       this.setState({out_msg});
     };
 
     render(){
-        const {current_table_string, out_msg} = this.state;
+        const {current_table_string, out_msg, correct_output, correct_answer} = this.state;
         return (
             <div>
-            <h2>Quiz Time.</h2>
+            
+            <h2 className="quiz__header">Quiz Time.</h2>
 
             <h3>The Question.</h3>
             <p dangerouslySetInnerHTML={{__html: lessons[this.props.lesson]['prompt']}} />
@@ -163,14 +169,23 @@ class MyQuiz extends Component {
             <p dangerouslySetInnerHTML={{__html: current_table_string}} />
             <p dangerouslySetInnerHTML={{__html: out_msg}} />
 
+            <form id="quiz-form">
             <h3>The Editor.</h3>
-            <form>
             <p>
-            <textarea id='sql-input' rows='8' cols='40' onChange={ this.updSqlVal }></textarea>
+            <textarea id='sql-input' rows='8' cols='30' onChange={ this.updSqlVal }></textarea>
             <br />
             <button id="sql-link" onClick={(e) => {this.submitSql(e)}}>Run SQL</button>
             </p>
             </form>
+
+            <div id="correct-display">
+              <h3>The Answers.</h3>
+              <h4>Correct SQL: </h4>
+              <code dangerouslySetInnerHTML={{__html: correct_answer}} />
+
+              <h4>Correct Output:</h4>
+              <p dangerouslySetInnerHTML={{__html: correct_output}} />
+            </div>
 
             </div>
         );
