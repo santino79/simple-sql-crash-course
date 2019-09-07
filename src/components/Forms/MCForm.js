@@ -11,9 +11,9 @@ export default class EmailForm extends React.Component {
   // these values can be pulled from React state, form fields,
   // or wherever.  (Personally, I recommend storing in state).
   _handleChange = (e) => {
-    console.log({
-        [`${e.target.name}`]: e.target.value,
-    });
+    // console.log({
+    //     [`${e.target.name}`]: e.target.value,
+    // });
     this.setState({
         [`${e.target.name}`]: e.target.value,
     });
@@ -22,13 +22,13 @@ export default class EmailForm extends React.Component {
   _handleSubmit = e => {
     e.preventDefault();
 
-    console.log('submit', this.state);
+    //console.log('submit', this.state);
 
     addToMailchimp(this.state.email, this.state) // listFields are optional if you are only capturing the email address.
     .then(({ msg, result }) => {
       // I recommend setting data to React state
       // but you can do whatever you want (including ignoring this `then()` altogether)
-      console.log('msg', `${result}: ${msg}`);
+      //console.log('msg', `${result}: ${msg}`);
 
     
     if (result !== 'success') {
@@ -37,7 +37,7 @@ export default class EmailForm extends React.Component {
                 alert(msg);
             })
             .catch((err) => {
-                console.log('err', err);
+                //console.log('err', err);
                 alert(err);
             });
     }
