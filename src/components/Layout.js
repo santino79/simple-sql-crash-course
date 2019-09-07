@@ -13,6 +13,7 @@ import { fonts } from '../lib/typography'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 
+
 const getGlobalStyles = theme => {
   return css`
     body {
@@ -90,6 +91,11 @@ const getGlobalStyles = theme => {
     .gatsby-resp-image-image {
       background: none !important;
       box-shadow: 0;
+    }
+    .table-name {
+      font-style: italic;
+      font-weight: bold;
+      padding-top: 10px;
     }
     button {
       border-radius: 4px;

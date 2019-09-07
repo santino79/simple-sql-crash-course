@@ -34,7 +34,7 @@ const Share = ({ url, title, twitterHandle }) => {
           border-top: 1px solid ${theme.colors.gray};
         `}
       />
-      <span>Share article</span>
+      <span>Share lesson</span>
       <TwitterShareButton
         url={url}
         quote={title}

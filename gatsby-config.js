@@ -12,15 +12,14 @@ module.exports = {
     title: config.siteTitle,
     twitterHandle: config.twitterHandle,
     description: config.siteDescription,
-    keywords: ['Video Blogger'],
+    keywords: ['SQL, lessons, tutorials'],
     canonicalUrl: config.siteUrl,
     image: config.siteLogo,
     author: {
       name: config.author,
       minibio: `
-        <strong>egghead</strong> is the premier place on the internet for 
-        experienced developers to enhance their skills and stay current
-        in the fast-faced field of web development.
+        <strong>SQL Crash Course</strong> is a great introduction to SQL for data analysts and developers who want 
+        to get started with querying relational databases.
       `,
     },
     organization: {
@@ -34,13 +33,8 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: 'blog',
-      },
-    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -56,8 +50,13 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/lessons`,
+        name: 'lessons',
+      },
+    },
     'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
@@ -123,7 +122,7 @@ module.exports = {
                 allMdx(
                   limit: 1000,
                   filter: { frontmatter: { published: { ne: false } } }
-                  sort: { order: DESC, fields: [frontmatter___date] }
+                  sort: { order: ASC, fields: [frontmatter___date] }
                 ) {
                   edges {
                     node {
@@ -141,7 +140,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Blog RSS Feed',
+            title: 'Site RSS Feed',
           },
         ],
       },
@@ -153,5 +152,11 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+          endpoint: 'https://simpleanalytical.us17.list-manage.com/subscribe/post?u=1e58028cba722dd5c36b41b5f&amp;id=2f14febbac', // add your MC list endpoint here;
+      },
+  },
   ],
 }

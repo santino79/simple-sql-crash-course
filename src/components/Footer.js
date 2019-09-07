@@ -1,9 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { bpMaxSM } from '../lib/breakpoints'
-import SubscribeForm from './Forms/Subscribe'
+import { Link } from 'gatsby' 
 import { Twitter, GitHub } from './Social'
 import Container from './Container'
+import MCForm from './Forms/MCForm'
 
 const Footer = ({ author, noSubscribeForm }) => (
   <footer>
@@ -17,7 +18,7 @@ const Footer = ({ author, noSubscribeForm }) => (
     >
       {!noSubscribeForm && (
         <div>
-          <SubscribeForm />
+          <MCForm />
           <br />
           <br />
         </div>
@@ -35,7 +36,7 @@ const Footer = ({ author, noSubscribeForm }) => (
             opacity: 0.7;
           `}
         >
-          {author && `${author} \u00A9 ${new Date().getFullYear()}`}
+          <Link to="/">{author && `${author}`}</Link> {` \u00A9 ${new Date().getFullYear()}`}
         </div>
         <div>
           <Twitter />

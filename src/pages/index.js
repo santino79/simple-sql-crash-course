@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
-import styled from '@emotion/styled'
+// import styled from '@emotion/styled'
 import Layout from 'components/Layout'
-import Link from 'components/Link'
+// import Link from 'components/Link'
 import { useTheme } from 'components/Theming'
 import Container from 'components/Container'
 import { rhythm } from '../lib/typography'
@@ -36,7 +36,7 @@ const Hero = () => {
             max-width: ${rhythm(15)};
           `}
         >
-          Your blog says the things you want to say.
+          Bite-sized SQL lessons for data analysts.
         </h1>
       </Container>
       <div
@@ -49,13 +49,13 @@ const Hero = () => {
   )
 }
 
-const Description = styled.p`
-  margin-bottom: 10px;
-  display: inline-block;
-`
+// const Description = styled.p`
+//   margin-bottom: 10px;
+//   display: inline-block;
+// `
 
 export default function Index({ data: { site, allMdx } }) {
-  const theme = useTheme()
+  // const theme = useTheme()
   return (
     <Layout site={site}>
       <Hero />
@@ -64,43 +64,37 @@ export default function Index({ data: { site, allMdx } }) {
           padding-bottom: 0;
         `}
       >
-        {allMdx.edges.map(({ node: post }) => (
-          <div
-            key={post.id}
-            css={css`
-              margin-bottom: 40px;
-            `}
-          >
-            <h2
-              css={css({
-                marginBottom: rhythm(0.3),
-                transition: 'all 150ms ease',
-                ':hover': {
-                  color: theme.colors.primary,
-                },
-              })}
-            >
-              <Link
-                to={post.frontmatter.slug}
-                aria-label={`View ${post.frontmatter.title}`}
-              >
-                {post.frontmatter.title}
-              </Link>
-            </h2>
-            <Description>
-              {post.excerpt}{' '}
-              <Link
-                to={post.frontmatter.slug}
-                aria-label={`View ${post.frontmatter.title}`}
-              >
-                Read Article →
-              </Link>
-            </Description>
-          </div>
-        ))}
-        <Link to="/blog" aria-label="Visit blog page">
-          View all articles
-        </Link>
+
+
+      <h3>Who is this FREE SQL Crash Course for?</h3>
+      <ul>
+        <li>
+        You don't have any SQL experience. All you're getting is tumbleweed when you apply for data jobs that ask for SQL knowledge. 
+        It's starting to look like you'll never get your foot in the door.
+        </li>
+      <li>You've been working with data and spreadsheets for years in your current job. 
+      Excel was your gateway drug. A macro here, a formula there. 
+      But no-one takes you seriously when you want to make the move into an actual BI analyst role.</li>
+
+      <li>You've taken Data Analytics classes in college and filled your resume with buzzwords aplenty. 
+      Spark, Hadoop, Python, R. But hiring managers won't even consider you for entry level data analyst jobs. 
+      They see your face drop into a sad frown when they mention your lack of SQL knowledge.</li>
+
+      <li>You hear recruiters say <strong>"every analyst should know the basics of SQL" </strong> 
+      but you don't even know where to begin.</li>
+      </ul>
+
+
+      <h3>What do I need to know?</h3>
+      <p>
+      You don't need any experience of SQL or coding for this course. 
+      We'll take it slowly and build the solid groundwork you'll need to get up to speed with SQL.
+      Then you can practice at your own pace with some interactive quizzes with real data and hands-on SQL code.
+      <br /><br />
+      Get started <strong>right now</strong> with the first lesson (it only takes a few minutes).
+      <br /><br />
+      <button href="/what-is-sql">Let's get started</button>
+      </p>
         <hr />
       </Container>
     </Layout>
@@ -138,13 +132,6 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             description
-            banner {
-              childImageSharp {
-                sizes(maxWidth: 720) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
             slug
             keywords
           }

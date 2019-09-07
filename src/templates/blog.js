@@ -28,23 +28,24 @@ const Blog = ({
     <Layout site={site}>
       <SEO />
       <Container noVerticalPadding>
+        <div><h2>All Lessons.</h2></div>
         {posts.map(({ node: post }) => (
           <div
             key={post.id}
             css={css`
               :not(:first-of-type) {
-                margin-top: 60px;
+                margin-top: 30px;
                 ${bpMaxMD} {
-                  margin-top: 40px;
+                  margin-top: 20px;
                 }
                 ${bpMaxSM} {
-                  margin-top: 20px;
+                  margin-top: 5px;
                 }
               }
               :first-of-type {
-                margin-top: 20px;
+                margin-top: 5px;
                 ${bpMaxSM} {
-                  margin-top: 20px;
+                  margin-top: 5px;
                 }
               }
               .gatsby-image-wrapper {
@@ -73,10 +74,10 @@ const Blog = ({
                 </Link>
               </div>
             )}
-            <h2
+            <h3
               css={css`
-                margin-top: 30px;
-                margin-bottom: 10px;
+                margin-top: 5px;
+                margin-bottom: 0;
               `}
             >
               <Link
@@ -85,21 +86,7 @@ const Blog = ({
               >
                 {post.frontmatter.title}
               </Link>
-            </h2>
-            {/* <small>{post.frontmatter.date}</small> */}
-            <p
-              css={css`
-                margin-top: 10px;
-              `}
-            >
-              {post.excerpt}
-            </p>{' '}
-            <Link
-              to={`/${post.fields.slug}`}
-              aria-label={`view "${post.frontmatter.title}" article`}
-            >
-              Read Article →
-            </Link>
+            </h3>
           </div>
         ))}
         <div css={css({ marginTop: '30px' })}>
@@ -149,13 +136,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
-            }
             slug
             keywords
           }

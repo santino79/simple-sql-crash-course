@@ -2,7 +2,7 @@ const path = require('path')
 
 const _ = require('lodash')
 const paginate = require('gatsby-awesome-pagination')
-const PAGINATION_OFFSET = 7
+const PAGINATION_OFFSET = 100
 
 const createPosts = (createPage, createRedirect, edges) => {
   edges.forEach(({ node }, i) => {
@@ -38,7 +38,7 @@ exports.createPages = ({ actions, graphql }) =>
     query {
       allMdx(
         filter: { frontmatter: { published: { ne: false } } }
-        sort: { order: DESC, fields: [frontmatter___date] }
+        sort: { order: ASC, fields: [frontmatter___date] }
       ) {
         edges {
           node {
@@ -71,7 +71,7 @@ exports.createPages = ({ actions, graphql }) =>
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
     createPosts(createPage, createRedirect, edges)
-    createPaginatedPages(actions.createPage, edges, '/blog', {
+    createPaginatedPages(actions.createPage, edges, '/lessons', {
       categories: [],
     })
   })
@@ -132,7 +132,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     const slug =
       parent.sourceInstanceName === 'legacy'
-        ? `blog/${node.frontmatter.date
+        ? `lessons/${node.frontmatter.date
             .split('T')[0]
             .replace(/-/g, '/')}/${titleSlugged}`
         : node.frontmatter.slug || titleSlugged

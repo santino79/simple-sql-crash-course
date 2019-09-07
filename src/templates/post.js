@@ -15,8 +15,8 @@ export default function Post({
   data: { site, mdx },
   pageContext: { next, prev },
 }) {
-  const author = mdx.frontmatter.author || config.author
-  const date = mdx.frontmatter.date
+  // const author = mdx.frontmatter.author || config.author
+  // const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
   const banner = mdx.frontmatter.banner
 
@@ -54,9 +54,9 @@ export default function Post({
               }
             `}
           >
-            {author && <h3>{author}</h3>}
+            {/* {author && <h3>{author}</h3>}
             {author && <span>—</span>}
-            {date && <h3>{date}</h3>}
+            {date && <h3>{date}</h3>} */}
           </div>
           {banner && (
             <div
@@ -100,13 +100,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         author
-        banner {
-          childImageSharp {
-            fluid(maxWidth: 900) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
         slug
         keywords
       }
