@@ -93,7 +93,7 @@ export default function Index({ data: { site, allMdx } }) {
       <br /><br />
       Get started <strong>right now</strong> with the first lesson (it only takes a few minutes).
       <br /><br />
-      <button href="/what-is-sql">Let's get started</button>
+      <button href="/sql-what-is-sql">Let's get started</button>
       </p>
         <hr />
       </Container>
