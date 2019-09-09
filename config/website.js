@@ -5,7 +5,7 @@ module.exports = {
   siteTitleShort: 'SQL Crash Course', // short_name for manifest
   siteUrl: 'https://sqlcrashcourse.com', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
-  siteLogo: 'social.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
+  siteLogo: 'https://sqlcrashcourse.com/social.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: 'Bite sized SQL lessons from SimpleAnalytical.com.',
   author: 'Simple Analytical', // Author for schemaORGJSONLD
   organization: 'Santinotech Ltd.',
