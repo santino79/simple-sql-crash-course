@@ -29,3 +29,26 @@
     background-color: #4CAF50;
     color: white;
   }
+
+  .link-button {
+    background-color: #0f8e08;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+    padding: 10px;
+  }
+  
+  
+  
+  .link-button:hover {
+    border: none;
+    background:#12a609;
+    color: #FFFFFF;
+    box-shadow: 0px 0px 1px #777;
+  }
+  

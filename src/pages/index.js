@@ -91,9 +91,9 @@ export default function Index({ data: { site, allMdx } }) {
       We'll take it slowly and build the solid groundwork you'll need to get up to speed with SQL.
       Then you can practice at your own pace with some interactive quizzes with real data and hands-on SQL code.
       <br /><br />
-      Get started <strong>right now</strong> with the first lesson (it only takes a few minutes).
+      Let's start <strong>right now</strong> with the first lesson (it only takes a few minutes).
       <br /><br />
-      <a href="/sql-what-is-sql">Let's get started</a>
+      <a href="/sql-what-is-sql" className="link-button">Get started with Lesson One=></a>
       </p>
         <hr />
       </Container>

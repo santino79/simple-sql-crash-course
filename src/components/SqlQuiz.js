@@ -143,7 +143,7 @@ class MyQuiz extends Component {
         document.getElementById("correct-display").style.display="block";
 
         if (current_lesson < num_lessons) {
-          out_msg += '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3">Try the next Lesson</a>';
+          out_msg += '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3" class="link-button">Try the next Lesson</a>';
         } else {
           out_msg += 'You have reached the end of the line.  Go put SQL Master on your CV!';
         }
