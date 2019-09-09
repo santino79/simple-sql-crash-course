@@ -12,6 +12,7 @@ import reset from '../lib/reset'
 import { fonts } from '../lib/typography'
 import config from '../../config/website'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 
 const getGlobalStyles = theme => {
@@ -199,6 +200,7 @@ export default ({
             <html lang="en" />
             <noscript>This site runs best with JavaScript enabled.</noscript>
           </Helmet>
+          <SEO />
           <Header />
           <MDXProvider components={mdxComponents}>
             <Fragment>{children}</Fragment>
