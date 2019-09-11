@@ -36,7 +36,8 @@ const Footer = ({ author, noSubscribeForm }) => (
             opacity: 0.7;
           `}
         >
-          <Link to="/">{author && `${author}`}</Link> {` \u00A9 ${new Date().getFullYear()}`}
+          <Link to="https://simpleanalytical.com">{author && `${author}`}</Link> {` \u00A9 ${new Date().getFullYear()}`} 
+          <Link to="/contact">{` Got any feedback?`}</Link>
         </div>
         <div>
           <Twitter />
