@@ -316,12 +316,14 @@ export const lessons = {
    'prompt': 'It\'s not all about the price tag when it comes to making these movies. Not unless you are a studio executive looking to see how big of a cheque you are going to have to write to get one made.<br /><br />Let\'s pretend you are Marvel\'s accountant for a second. Get the total budget for all four Avengers movies (and remember these budget figures are in MILLIONS of US dollars).'},
 
     19: {'name': 'AVG',
+    'short_name': 'sql-avg',
     'dbSetup': createMovies2Table + insertIntoMovies2("The Avengers",2012,220) + insertIntoMovies2("Avengers: Age of Ultron",2015,250) + insertIntoMovies2("Avengers: Infinity War",2018,321) + insertIntoMovies2("Avengers: Endgame",2019,356),
     'table_names': "movies",
     'answer': "SELECT AVG(budget) FROM movies;",
     'prompt': 'We can see by looking at the data table that the cost of making an Avengers movie went up quite dramatically over time.<br /><br /><strong>The price of success.</strong><br /><br />How much did an average Avengers movie cost to make though?'},
 
     20: {'name': 'MAX and MIN',
+    'short_name': 'sql-max-min',
     'dbSetup': createMovies2Table + insertIntoMovies2("The Avengers",2012,220) + insertIntoMovies2("Avengers: Age of Ultron",2015,250) + insertIntoMovies2("Avengers: Infinity War",2018,321) + insertIntoMovies2("Avengers: Endgame",2019,356),
     'table_names': "movies",
     'answer': "SELECT MIN(budget), MAX(budget) FROM movies;",
@@ -335,6 +337,7 @@ export const lessons = {
    'prompt': 'Just knowing how many superheroes we have in total is good. Knowing which different nationalities they represent is good.<br /><br />But we want to know how many superheroes of each nationality we have.<br /><br />So we\'ll be using both COUNT and GROUP BY. Give it a go and see how you get on.'},
 
     22: {'name': 'HAVING',
+    'short_name': 'sql-having',
     'dbSetup': createCharacters5Table + insertIntoCharacters5("Thor","Asgardian") + insertIntoCharacters5("Loki","Asgardian") + insertIntoCharacters5("Captain America","American") + insertIntoCharacters5("Black Widow","Russian") + insertIntoCharacters5("Tony Stark","American") + insertIntoCharacters5("Peter Parker","American") + insertIntoCharacters5("Wong","Chinese"),
     'table_names': "characters",
     'answer': "SELECT nationality, COUNT(*) FROM characters GROUP BY nationality HAVING COUNT(id) > 1;",
