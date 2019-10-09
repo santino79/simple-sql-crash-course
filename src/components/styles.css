@@ -42,8 +42,7 @@
     border:none;
     padding: 10px;
   }
-  
-  
+   
   
   .link-button:hover {
     border: none;
@@ -52,3 +51,30 @@
     box-shadow: 0px 0px 1px #777;
   }
   
+  .ans-link {
+    background-color: #acacac;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:6px;
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+    padding: 6px;
+  }
+   
+  
+  .ans-link:hover {
+    border: none;
+    background:#6dac6a;
+    color: #222;
+    box-shadow: 0px 0px 1px #777;
+  }
+
+  .ash-form {
+    background-color: #e5eaec;
+    border: 3px solid #d6dee1;
+    color: #333;
+    padding: 10px;
+}

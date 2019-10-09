@@ -20,7 +20,8 @@ class MyQuiz extends Component {
             correct_results: {},
             correct_output: '',
             out_msg: '',
-            num_lessons: null
+            num_lessons: null,
+            next_link: ''
         };
         this.updSqlVal = this.updSqlVal.bind(this);
         this.db = new sql.Database(); 
@@ -36,7 +37,7 @@ class MyQuiz extends Component {
             const dropQuery = "DROP TABLE IF EXISTS " + table;
             this.db.exec(dropQuery);
         }
-        this.setState({ currTblVals:{}, sqlValue:"", out_msg:''})
+        this.setState({ currTblVals:{}, sqlValue:"", out_msg:'', next_link:''})
     };
 
     // Return an HTML table as a string, given SQL.js results
@@ -135,15 +136,16 @@ class MyQuiz extends Component {
 
     show_is_correct = (is_correct, custom_error_message) => {
       const {current_lesson, num_lessons } = this.state;
-      var out_msg = this.state;
+      var {out_msg, next_link} = this.state;
       
       if (is_correct) {
         out_msg = '<h4>Well done! That\'s the right answer!</h4>';
         document.getElementById("quiz-form").style.display="none";
         document.getElementById("correct-display").style.display="block";
+        document.getElementById("answer-link").style.display="none";       
 
         if (current_lesson < num_lessons) {
-          out_msg += '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3" class="link-button">Try the next Lesson</a>';
+          next_link = '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3" class="link-button">Try the next Lesson</a>';
         } else {
           out_msg += 'You have reached the end of the line.  Go put SQL Master on your CV!';
         }
@@ -152,13 +154,27 @@ class MyQuiz extends Component {
       } else {
         out_msg = '<h4>Hmmm.</h4> It\'s good but it\'s not right.  Have another go.';
       }
-      this.setState({out_msg});
+      this.setState({out_msg, next_link});
     };
 
+    show_answer = () => {
+        const {current_lesson, num_lessons } = this.state;
+        var {next_link} = this.state;
+
+        document.getElementById("quiz-form").style.display="none";
+        document.getElementById("correct-display").style.display="block";
+        document.getElementById("answer-link").style.display="none";
+        
+        if (current_lesson < num_lessons) {
+          next_link = '<a href="/' + lessons[current_lesson+1]['short_name'] + '" tabindex="3" class="link-button">Try the next Lesson</a>';
+        }
+        this.setState({next_link});
+      };
+
     render(){
-        const {current_table_string, out_msg, correct_output, correct_answer} = this.state;
+        const {current_table_string, out_msg, correct_output, correct_answer, next_link} = this.state;
         return (
-            <div>
+            <div className="ash-form">
             
             <h2 className="quiz__header">Quiz Time.</h2>
 
@@ -166,8 +182,8 @@ class MyQuiz extends Component {
             <p dangerouslySetInnerHTML={{__html: lessons[this.props.lesson]['prompt']}} />
 
             <h3>The Data.</h3>
-            <p dangerouslySetInnerHTML={{__html: current_table_string}} />
-            <p dangerouslySetInnerHTML={{__html: out_msg}} />
+            <div dangerouslySetInnerHTML={{__html: current_table_string}} />
+            <div dangerouslySetInnerHTML={{__html: out_msg}} />
 
             <form id="quiz-form">
             <h3>The Editor.</h3>
@@ -177,14 +193,20 @@ class MyQuiz extends Component {
             <button id="sql-link" onClick={(e) => {this.submitSql(e)}}>Run SQL</button>
             </p>
             </form>
+            <br />
+            <button id="answer-link" class="ans-link" onClick={() => {this.show_answer()}}>Show Answer</button>
+
 
             <div id="correct-display">
-              <h3>The Answers.</h3>
+              <h3>The Answer.</h3>
               <h4>Correct SQL: </h4>
               <code dangerouslySetInnerHTML={{__html: correct_answer}} />
 
               <h4>Correct Output:</h4>
               <p dangerouslySetInnerHTML={{__html: correct_output}} />
+
+              <p dangerouslySetInnerHTML={{__html: next_link}} />
+
             </div>
 
             </div>
