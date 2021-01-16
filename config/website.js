@@ -7,7 +7,7 @@ module.exports = {
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: 'https://sqlcrashcourse.com/social.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: 'Bite sized SQL lessons from SimpleAnalytical.com.',
-  author: 'Simple Analytical', // Author for schemaORGJSONLD
+  author: 'Alan Hylands', // Author for schemaORGJSONLD
   organization: 'Santinotech Ltd.',
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional

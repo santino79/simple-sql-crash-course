@@ -8,6 +8,14 @@ const createCharactersTable =
                 alter_ego VARCHAR(128)
               );`;
 
+const createCharactersNTable =
+`CREATE TABLE IF NOT EXISTS
+          characters(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name VARCHAR(128) NOT NULL,
+            alter_ego VARCHAR(128)
+          );`;
+
 const createCharacters2Table =
 `CREATE TABLE IF NOT EXISTS
           characters(
@@ -132,6 +140,10 @@ const insertIntoActors1 = (name) => (
 const insertIntoCharacters = (name, alter_ego) => (
 `INSERT INTO characters (name, alter_ego) values ('${name}', '${alter_ego}');`
 );
+
+const insertIntoCharactersN = (name, alter_ego) => (
+  `INSERT INTO characters (name, alter_ego) values ('${name}', ${alter_ego});`
+  );
 
 const insertIntoCharacters2 = (name, eyes) => (
   `INSERT INTO characters (name, eyes) values ('${name}', '${eyes}');`
@@ -345,14 +357,14 @@ export const lessons = {
    
     23: {'name': 'NULL',
    'short_name': 'sql-null',
-   'dbSetup': createCharactersTable + insertIntoCharacters("Incredible Hulk","Bruce Banner") + insertIntoCharacters("Iron Man","Tony Stark") + insertIntoCharacters("Captain America","Steve Rogers") + insertIntoCharacters("Howard The Duck", null),
+   'dbSetup': createCharactersNTable + insertIntoCharactersN("Incredible Hulk","'Bruce Banner'") + insertIntoCharactersN("Iron Man","'Tony Stark'") + insertIntoCharactersN("Captain America","'Steve Rogers'") + insertIntoCharactersN("Howard The Duck", null),
    'table_names': "characters",
-   'answer': "SELECT * FROM characters WHERE alter_ego IS NOT null;",
+   'answer': "SELECT * FROM characters WHERE alter_ego IS NOT NULL;",
    'prompt': 'We like Alter Egos. We only want characters who HAVE an alter ego. So use the NULL value to eliminate any characters from our table who don\'t have an alter ego.'},
 
     24: {'name': 'COALESCE',
    'short_name': 'sql-coalesce',
-   'dbSetup': createCharactersTable + insertIntoCharacters("Incredible Hulk","Bruce Banner") + insertIntoCharacters("Iron Man","Tony Stark") + insertIntoCharacters("Captain America","Steve Rogers") + insertIntoCharacters("Howard The Duck", null),
+   'dbSetup': createCharactersNTable + insertIntoCharactersN("Incredible Hulk","'Bruce Banner'") + insertIntoCharactersN("Iron Man","'Tony Stark'") + insertIntoCharactersN("Captain America","'Steve Rogers'") + insertIntoCharactersN("Howard The Duck", null),
    'table_names': "characters",
    'answer': "SELECT COALESCE(alter_ego, name) FROM characters;",
    'prompt': 'NULLs really are a pain in the ass. Use COALESCE to substitute in the character\'s name if they have a NULL value for their Alter Ego name.'},

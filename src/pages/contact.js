@@ -26,7 +26,7 @@ export default function Index({ data: { site } }) {
       <br /><br />
       Thanks!
       <br />
-      Alan, <a href="https://simpleanalytical.com">SimpleAnalytical.com</a>
+      Alan
     </p>
     
     <form name="contact" method="POST" data-netlify="true" action="/contact-success">
